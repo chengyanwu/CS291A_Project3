@@ -8,3 +8,17 @@
 
   <%= button_to "Destroy this user", @user, method: :delete %>
 </div>
+
+<div>
+  <-------------------------->
+  <strong> list of posts </strong>
+</div>
+
+<div id="posts">
+  <% @user.posts.each do |post| %>
+    <%= render post %>
+    <p>
+      <%= link_to "Show this post", post %>
+    </p>
+  <% end %>
+</div>
