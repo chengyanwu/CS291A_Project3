@@ -2,13 +2,53 @@
 
 <h1>Users</h1>
 
-<div id="users">
+<div id="users" class="list-group">
+
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+    <a href="#" class="list-group-item list-group-item-action list-group-item-dark" aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">
+            <%= user.name%>
+          </h5>
+        </div>
+          <h class="mb-1">
+          <h> Email: </h>
+          <%= user.email %>
+          
+
+          <%- user.posts.each do |post| -%>
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                  <%= post.content%>
+                </h5>
+              </div>
+
+              <%- post.comments.each do |comment| -%>
+                <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                  <%= comment.comment%>
+                  <h> By User </h>
+                  <%= comment.user_id %>
+                </h5>
+                </div>
+
+              <%- end -%>
+
+
+            </a>
+            <%- end -%>
+            <%= link_to "Show this user", user %>
+          </h>
+
+    </a>
+
+
   <% end %>
 </div>
 
 <%= link_to "New user", new_user_path %>
+
+
+
+
